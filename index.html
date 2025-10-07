@@ -1,0 +1,2307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JN Electronics - Premium Electronics Store</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #004aad;
+      --primary-dark: #003580;
+      --secondary: #ff6b6b;
+      --accent: #00c6ff;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --success: #28a745;
+      --warning: #ffc107;
+      --gradient: linear-gradient(135deg, #004aad 0%, #2a6bc9 100%);
+      --gradient-secondary: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+      --gradient-success: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    }
+    
+    body { 
+      background: #f8f9fa; 
+      font-family: 'Poppins', sans-serif; 
+      overflow-x: hidden;
+    }
+    
+    /* Premium Navbar */
+    .navbar { 
+      background: var(--gradient); 
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+      padding: 15px 0;
+    }
+    
+    .navbar-brand { 
+      font-weight: 700; 
+      color: white !important; 
+      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .navbar-brand i {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 10px;
+      border-radius: 10px;
+      margin-right: 10px;
+    }
+    
+    .nav-link, #userNameText { 
+      color: white !important; 
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    
+    .nav-link:hover, #userNameText:hover { 
+      color: rgba(255, 255, 255, 0.8) !important; 
+      transform: translateY(-2px);
+    }
+    
+    /* Search Bar */
+    .search-container {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    
+    .search-input {
+      border-radius: 50px;
+      padding: 12px 20px;
+      border: none;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      transition: all 0.3s;
+    }
+    
+    .search-input:focus {
+      box-shadow: 0 4px 20px rgba(0, 74, 173, 0.3);
+      outline: none;
+    }
+    
+    .search-btn {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      background: var(--primary);
+      border: none;
+      border-radius: 50px;
+      color: white;
+      padding: 7px 15px;
+      transition: all 0.3s;
+    }
+    
+    .search-btn:hover {
+      background: var(--primary-dark);
+    }
+    
+    /* Premium Product Cards */
+    .product-card { 
+      border: none; 
+      border-radius: 16px; 
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08); 
+      transition: 0.4s; 
+      cursor: pointer; 
+      height: 100%; 
+      overflow: hidden;
+      background: white;
+    }
+    
+    .product-card:hover { 
+      transform: translateY(-10px); 
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15); 
+    }
+    
+    .product-card img { 
+      height: 220px; 
+      object-fit: cover; 
+      border-radius: 16px 16px 0 0; 
+      width: 100%; 
+      transition: transform 0.5s;
+    }
+    
+    .product-card:hover img {
+      transform: scale(1.05);
+    }
+    
+    .category-title { 
+      font-weight: 700; 
+      color: var(--primary); 
+      margin-top: 40px; 
+      margin-bottom: 25px; 
+      padding-bottom: 15px; 
+      border-bottom: 3px solid var(--primary);
+      position: relative;
+      font-size: 1.8rem;
+    }
+    
+    .category-title:after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 80px;
+      height: 3px;
+      background: var(--secondary);
+    }
+    
+    /* Premium Footer */
+    footer { 
+      background: var(--gradient); 
+      color: white; 
+      text-align: center; 
+      padding: 30px 0; 
+      margin-top: 60px; 
+    }
+    
+    /* Cart & Badges */
+    .cart-badge { 
+      position: absolute; 
+      top: -8px; 
+      right: -8px; 
+    }
+    
+    .cart-icon { 
+      position: relative; 
+    }
+    
+    /* Animations */
+    .animate-popup { 
+      animation: popup 0.5s ease-out; 
+    }
+    
+    @keyframes popup { 
+      0% { transform: scale(0.5); opacity: 0; } 
+      100% { transform: scale(1); opacity: 1; } 
+    }
+    
+    /* Premium Hero Section */
+    .hero-section { 
+      background: var(--gradient); 
+      color: white; 
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-section:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.05"><polygon fill="white" points="0,1000 1000,0 1000,1000"/></svg>');
+      background-size: cover;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Premium Buttons */
+    .btn-primary {
+      background: var(--primary);
+      border: none;
+      border-radius: 10px;
+      padding: 12px 25px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 7px 15px rgba(0, 74, 173, 0.3);
+    }
+    
+    .btn-secondary {
+      background: var(--secondary);
+      border: none;
+      border-radius: 10px;
+      padding: 12px 25px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .btn-secondary:hover {
+      background: #ff5252;
+      transform: translateY(-3px);
+      box-shadow: 0 7px 15px rgba(255, 107, 107, 0.3);
+    }
+    
+    /* Premium Modals */
+    .modal-content {
+      border-radius: 16px;
+      border: none;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+    }
+    
+    .modal-header {
+      background: var(--gradient);
+      color: white;
+      border-bottom: none;
+      padding: 20px 25px;
+    }
+    
+    .modal-header .btn-close {
+      filter: invert(1);
+    }
+    
+    /* Premium Login/Signup Forms */
+    .auth-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gradient);
+      padding: 20px;
+    }
+    
+    .auth-card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      width: 100%;
+      max-width: 450px;
+    }
+    
+    .auth-header {
+      background: var(--gradient);
+      color: white;
+      text-align: center;
+      padding: 30px;
+    }
+    
+    .auth-body {
+      padding: 30px;
+    }
+    
+    .form-control {
+      border-radius: 10px;
+      padding: 12px 15px;
+      border: 1px solid #e0e0e0;
+      transition: all 0.3s;
+    }
+    
+    .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 0.2rem rgba(0, 74, 173, 0.15);
+    }
+    
+    .auth-link {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .auth-link:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+    
+    /* Gift Animation */
+    .gift-box {
+      width: 150px;
+      height: 150px;
+      background: var(--secondary);
+      position: relative;
+      margin: 0 auto;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      animation: bounce 1s infinite alternate;
+    }
+    
+    @keyframes bounce { 
+      from { transform: translateY(0); } 
+      to { transform: translateY(-20px); } 
+    }
+    
+    .gift-lid {
+      width: 160px;
+      height: 40px;
+      background: #ff5252;
+      position: absolute;
+      top: -40px;
+      left: -5px;
+      border-radius: 10px 10px 0 0;
+    }
+    
+    .gift-open {
+      animation: openGift 1.5s forwards;
+    }
+    
+    @keyframes openGift { 
+      0% { transform: scale(1); } 
+      50% { transform: scale(1.1); } 
+      100% { transform: scale(1); opacity: 0; } 
+    }
+    
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: #f00;
+      opacity: 0;
+      z-index: 10000;
+    }
+    
+    /* Contact & Feedback */
+    .contact-section { 
+      background: #f8f9fa; 
+      padding: 80px 0; 
+    }
+    
+    .feedback-card { 
+      border-radius: 20px; 
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
+      border: none; 
+      overflow: hidden;
+    }
+    
+    .rating-stars { 
+      font-size: 24px; 
+      cursor: pointer; 
+    }
+    
+    .rating-star:hover { 
+      color: #ffc107 !important; 
+    }
+    
+    .product-details { 
+      padding: 20px; 
+    }
+    
+    .carousel-image { 
+      height: 400px; 
+      object-fit: contain; 
+      background: #f8f9fa; 
+      border-radius: 10px; 
+    }
+    
+    .product-features { 
+      list-style: none; 
+      padding-left: 0; 
+    }
+    
+    .product-features li { 
+      padding: 8px 0; 
+      border-bottom: 1px solid #eee; 
+    }
+    
+    .product-features li:before { 
+      content: "✓ "; 
+      color: #28a745; 
+      font-weight: bold; 
+    }
+    
+    .order-card { 
+      background: white; 
+      border-radius: 15px; 
+      padding: 20px; 
+      margin-bottom: 20px; 
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08); 
+      border-left: 5px solid var(--primary);
+    }
+    
+    #admin-panel-btn { 
+      margin-left: 10px; 
+    }
+    
+    /* Floating Elements */
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+      0% { transform: translate(0, 0px); }
+      50% { transform: translate(0, -15px); }
+      100% { transform: translate(0, 0px); }
+    }
+    
+    /* Premium Badges */
+    .badge-premium {
+      background: var(--gradient-secondary);
+      color: white;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+    }
+    
+    /* Company Login/Signup */
+    .company-tab {
+      display: flex;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .tab-btn {
+      flex: 1;
+      padding: 12px;
+      background: white;
+      border: none;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .tab-btn.active {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    /* Search Results */
+    .search-results {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: white;
+      border-radius: 0 0 10px 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      z-index: 1000;
+      max-height: 300px;
+      overflow-y: auto;
+      display: none;
+    }
+    
+    .search-result-item {
+      padding: 10px 15px;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .search-result-item:hover {
+      background: #f8f9fa;
+    }
+    
+    .search-result-item:last-child {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Premium Navbar -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <i class="fas fa-laptop"></i>
+        JN Electronics
+      </a>
+      
+      <!-- Search Bar -->
+      <div class="search-container">
+        <input type="text" class="search-input" id="searchInput" placeholder="Search for products...">
+        <button class="search-btn" id="searchBtn"><i class="fas fa-search"></i></button>
+        <div class="search-results" id="searchResults"></div>
+      </div>
+      
+      <div class="d-flex ms-auto">
+        <span id="userNameText" class="me-3 d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#accountModal">
+          <i class="fas fa-user me-2"></i>Account
+        </span>
+        <button id="logoutBtn" class="btn btn-light btn-sm me-2" style="display:none;">
+          <i class="fas fa-sign-out-alt me-1"></i>Logout
+        </button>
+        <button class="btn btn-outline-light btn-sm me-2" data-bs-toggle="modal" data-bs-target="#loginModal">
+          <i class="fas fa-sign-in-alt me-1"></i>Login
+        </button>
+        <button class="btn btn-light btn-sm me-2" data-bs-toggle="modal" data-bs-target="#signupModal">
+          <i class="fas fa-user-plus me-1"></i>Sign Up
+        </button>
+        <button id="admin-panel-btn" class="btn btn-warning btn-sm me-2" style="display:none;" onclick="showAdminPanel()">
+          <i class="fas fa-cog me-1"></i>Admin Panel
+        </button>
+        <button class="btn btn-outline-light btn-sm me-2" id="myOrdersBtn" style="display:none;" onclick="showMyOrders()">
+          <i class="fas fa-box me-1"></i>My Orders
+        </button>
+        <div class="cart-icon">
+          <button class="btn btn-outline-light btn-sm position-relative" id="cartButton">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cartBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display:none;">0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== ORDER SYSTEM SECTION ===== -->
+  <section id="orders-section" class="container mt-4" style="display:none;">
+    <h2 class="category-title"><i class="fas fa-box me-2"></i>My Orders</h2>
+    <div id="orders-list"></div>
+  </section>
+
+  <section id="admin-section" class="container mt-4" style="display:none;">
+    <h2 class="category-title"><i class="fas fa-user-cog me-2"></i>Admin Order Panel</h2>
+    <div id="admin-orders"></div>
+  </section>
+
+  <!-- Premium Hero Section -->
+  <section class="text-center py-5 hero-section">
+    <div class="container hero-content">
+      <h1 class="fw-bold mb-4 display-4">Welcome to JN Electronics</h1>
+      <p class="lead mb-4 fs-5">Discover the latest technology with premium products and exclusive deals</p>
+      <button class="btn btn-light btn-lg mt-3" data-bs-toggle="modal" data-bs-target="#offersModal">
+        <i class="fas fa-gift me-2"></i>Special Offers
+      </button>
+    </div>
+  </section>
+
+  <!-- Product Categories -->
+  <div class="container pb-5">
+    <h3 class="category-title"><i class="fas fa-laptop me-2"></i>Laptops</h3>
+    <div class="row" id="laptopSection"></div>
+
+    <h3 class="category-title"><i class="fas fa-mobile-alt me-2"></i>Mobiles</h3>
+    <div class="row" id="mobileSection"></div>
+
+    <h3 class="category-title"><i class="fas fa-tv me-2"></i>Televisions</h3>
+    <div class="row" id="tvSection"></div>
+
+    <h3 class="category-title"><i class="fas fa-tablet-alt me-2"></i>Tablets</h3>
+    <div class="row" id="tabletSection"></div>
+
+    <h3 class="category-title"><i class="fas fa-headphones me-2"></i>Accessories</h3>
+    <div class="row" id="accessorySection"></div>
+  </div>
+
+  <!-- Contact & Feedback -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <h2 class="text-center mb-5 category-title"><i class="fas fa-headset me-2"></i>Contact & Feedback</h2>
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="card feedback-card h-100">
+            <div class="card-body p-4">
+              <h3 class="card-title text-primary mb-4"><i class="fas fa-comment-alt me-2"></i>Send Feedback</h3>
+              <form id="feedbackForm">
+                <div class="mb-3">
+                  <label for="feedbackName" class="form-label">Your Name</label>
+                  <input type="text" class="form-control" id="feedbackName" required>
+                </div>
+                <div class="mb-3">
+                  <label for="feedbackEmail" class="form-label">Email Address</label>
+                  <input type="email" class="form-control" id="feedbackEmail" required>
+                </div>
+                <div class="mb-3">
+                  <label for="feedbackMessage" class="form-label">Your Feedback</label>
+                  <textarea class="form-control" id="feedbackMessage" rows="4" required></textarea>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Rating</label>
+                  <div class="rating-stars">
+                    <i class="far fa-star rating-star" data-rating="1"></i>
+                    <i class="far fa-star rating-star" data-rating="2"></i>
+                    <i class="far fa-star rating-star" data-rating="3"></i>
+                    <i class="far fa-star rating-star" data-rating="4"></i>
+                    <i class="far fa-star rating-star" data-rating="5"></i>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 py-3">Submit Feedback</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="card feedback-card h-100">
+            <div class="card-body p-4">
+              <h3 class="card-title text-primary mb-4">
+                <i class="fas fa-address-card me-2"></i>Contact Us
+              </h3>
+        
+              <div class="mb-4">
+                <h5><i class="fas fa-map-marker-alt text-primary me-2"></i>Address</h5>
+                <p>JN Electronics, Kumbazha Road, Pathanamthitta, Kerala 689645</p>
+              </div>
+        
+              <div class="mb-4">
+                <h5><i class="fas fa-phone text-primary me-2"></i>Phone</h5>
+                <p>+91 97456 12345</p>
+              </div>
+        
+              <div class="mb-4">
+                <h5><i class="fas fa-envelope text-primary me-2"></i>Email</h5>
+                <p>support@jnelectronics.in</p>
+              </div>
+        
+              <div class="mb-4">
+                <h5><i class="fas fa-clock text-primary me-2"></i>Business Hours</h5>
+                <p>Mon–Fri: 9:00 AM – 7:30 PM<br>Sat–Sun: 10:00 AM – 6:00 PM</p>
+              </div>
+        
+              <div class="social-links">
+                <a href="#" class="btn btn-outline-primary me-2"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="btn btn-outline-primary me-2"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="btn btn-outline-primary me-2"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="btn btn-outline-primary"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 Product Modal -->
+  <div class="modal fade" id="productModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="productModalLabel"></h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div id="carouselProduct" class="carousel slide mb-3" data-bs-ride="carousel">
+            <div class="carousel-inner" id="productImages"></div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselProduct" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselProduct" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          <div class="product-details">
+            <p id="productDesc" class="mb-3"></p>
+            <h5 id="productPrice" class="text-primary mb-4"></h5>
+            <button class="btn btn-success w-100 py-2" id="addToCartBtn">
+              <i class="fas fa-cart-plus me-2"></i>Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🔹 Cart Modal -->
+  <div class="modal fade" id="cartModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><i class="fas fa-shopping-cart me-2"></i>My Cart</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body" id="cartItems">
+          <p class="text-center">Your cart is empty</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Continue Shopping</button>
+          <button class="btn btn-primary" id="checkoutBtn" style="display:none;">
+            <i class="fas fa-credit-card me-2"></i>Proceed to Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🔹 Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title w-100 text-center"><i class="fas fa-sign-in-alt me-2"></i>Login to Your Account</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="company-tab">
+            <button class="tab-btn active" data-tab="customer">Customer</button>
+            <button class="tab-btn" data-tab="company">Company</button>
+          </div>
+          
+          <div class="tab-content active" id="customerLogin">
+            <form id="loginForm">
+              <div class="mb-3">
+                <label for="loginEmail" class="form-label">Email Address</label>
+                <input type="email" id="loginEmail" class="form-control" placeholder="Enter your email" required>
+              </div>
+              <div class="mb-3">
+                <label for="loginPassword" class="form-label">Password</label>
+                <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password" required>
+              </div>
+              <button class="btn btn-primary w-100 py-3 mt-3" type="submit">
+                <i class="fas fa-sign-in-alt me-2"></i>Login
+              </button>
+            </form>
+          </div>
+          
+          <div class="tab-content" id="companyLogin">
+            <form id="companyLoginForm">
+              <div class="mb-3">
+                <label for="companyEmail" class="form-label">Company Email</label>
+                <input type="email" id="companyEmail" class="form-control" placeholder="Enter company email" required>
+              </div>
+              <div class="mb-3">
+                <label for="companyPassword" class="form-label">Password</label>
+                <input type="password" id="companyPassword" class="form-control" placeholder="Enter company password" required>
+              </div>
+              <button class="btn btn-primary w-100 py-3 mt-3" type="submit">
+                <i class="fas fa-building me-2"></i>Company Login
+              </button>
+            </form>
+          </div>
+          
+          <div class="text-center mt-4">
+            <p>Don't have an account? <a href="#" class="auth-link" data-bs-toggle="modal" data-bs-target="#signupModal" data-bs-dismiss="modal">Sign up here</a></p>
+          </div>
+          <div id="loginMessage" class="mt-3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🔹 Signup Modal -->
+  <div class="modal fade" id="signupModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title w-100 text-center"><i class="fas fa-user-plus me-2"></i>Create New Account</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="company-tab">
+            <button class="tab-btn active" data-tab="customer">Customer</button>
+            <button class="tab-btn" data-tab="company">Company</button>
+          </div>
+          
+          <div class="tab-content active" id="customerSignup">
+            <form id="signupForm">
+              <div class="mb-3">
+                <label for="signupName" class="form-label">Full Name</label>
+                <input type="text" id="signupName" class="form-control" placeholder="Enter your full name" required>
+              </div>
+              <div class="mb-3">
+                <label for="signupEmail" class="form-label">Email Address</label>
+                <input type="email" id="signupEmail" class="form-control" placeholder="Enter your email" required>
+              </div>
+              <div class="mb-3">
+                <label for="signupPassword" class="form-label">Password</label>
+                <input type="password" id="signupPassword" class="form-control" placeholder="Create a password" required>
+              </div>
+              <button class="btn btn-success w-100 py-3 mt-3" type="submit">
+                <i class="fas fa-user-plus me-2"></i>Sign Up
+              </button>
+            </form>
+          </div>
+          
+          <div class="tab-content" id="companySignup">
+            <form id="companySignupForm">
+              <div class="mb-3">
+                <label for="companyName" class="form-label">Company Name</label>
+                <input type="text" id="companyName" class="form-control" placeholder="Enter company name" required>
+              </div>
+              <div class="mb-3">
+                <label for="companyRegEmail" class="form-label">Company Email</label>
+                <input type="email" id="companyRegEmail" class="form-control" placeholder="Enter company email" required>
+              </div>
+              <div class="mb-3">
+                <label for="companyRegPassword" class="form-label">Password</label>
+                <input type="password" id="companyRegPassword" class="form-control" placeholder="Create a password" required>
+              </div>
+              <div class="mb-3">
+                <label for="companyAddress" class="form-label">Company Address</label>
+                <textarea id="companyAddress" class="form-control" placeholder="Enter company address" required></textarea>
+              </div>
+              <button class="btn btn-success w-100 py-3 mt-3" type="submit">
+                <i class="fas fa-building me-2"></i>Register Company
+              </button>
+            </form>
+          </div>
+          
+          <div class="text-center mt-4">
+            <p>Already have an account? <a href="#" class="auth-link" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Login here</a></p>
+          </div>
+          <div id="signupMessage" class="mt-3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🔹 Account Modal -->
+  <div class="modal fade" id="accountModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title w-100 text-center"><i class="fas fa-user-circle me-2"></i>Account Details</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div id="accountDetails">
+            <p class="text-center">Please login to view account details</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🔹 Special Offers Modal -->
+  <div class="modal fade" id="offersModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5><i class="fas fa-gift me-2"></i>Special Offers</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-success">
+            <h6><i class="fas fa-gift me-2"></i>10% Off on First Purchase</h6>
+            <p class="mb-0">Use code: WELCOME10</p>
+          </div>
+          <div class="alert alert-info">
+            <h6><i class="fas fa-shipping-fast me-2"></i>Free Shipping</h6>
+            <p class="mb-0">On orders above ₹50,000</p>
+          </div>
+          <div class="alert alert-warning">
+            <h6><i class="fas fa-percentage me-2"></i>Exchange Offer</h6>
+            <p class="mb-0">Get up to ₹15,000 off on exchange of old devices</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Premium Footer -->
+  <footer>
+    <div class="container">
+      <p class="mb-0">© 2025 JN Electronics. All rights reserved.</p>
+      <div class="mt-3">
+        <a href="#" class="text-white me-3 fs-5"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="text-white me-3 fs-5"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="text-white me-3 fs-5"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="text-white fs-5"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // API Configuration
+    const API_BASE = "https://jn-electronics-backend.onrender.com/api";
+
+const ADMIN_EMAILS = ["admin@jnelectronics.com", "jithinnelson2@gmail.com"];
+
+
+    // 🔹 SAMPLE PRODUCT DATA (same as your original)
+    const products = {
+        laptops: [
+          { 
+            name: "HP Pavilion 15", 
+            price: 72000, 
+            desc: "Powerful Intel i7 laptop with 16GB RAM, 512GB SSD, and 15.6-inch Full HD display. Perfect for work and entertainment.", 
+            images: [
+              "https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&h=400&fit=crop"
+            ],
+            features: ["Intel Core i7 Processor", "16GB RAM", "512GB SSD", "15.6\" Full HD Display", "Windows 11"],
+            category: "laptops"
+          },
+          { 
+            name: "Dell Inspiron 14", 
+            price: 68000, 
+            desc: "Sleek, lightweight, and ideal for business with long battery life and premium build quality.", 
+            images: [
+              "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?w=500&h=400&fit=crop"
+            ],
+            features: ["Intel Core i5 Processor", "8GB RAM", "256GB SSD", "14\" Display", "12-hour Battery"],
+            category: "laptops"
+          },
+          { 
+            name: "Asus ROG Strix", 
+            price: 95000, 
+            desc: "Gaming beast with RTX graphics, high refresh rate display, and advanced cooling system.", 
+            images: [
+              "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=500&h=400&fit=crop"
+            ],
+            features: ["Intel Core i7 Processor", "16GB RAM", "1TB SSD", "RTX 3060 GPU", "144Hz Display"],
+            category: "laptops"
+          },
+          { 
+            name: "MacBook Air M2", 
+            price: 120000, 
+            desc: "Apple M2 chip, ultra-thin design, 18h battery life, and stunning Retina display.", 
+            images: [
+              "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&h=400&fit=crop"
+            ],
+            features: ["Apple M2 Chip", "8GB RAM", "256GB SSD", "13.6\" Retina Display", "18-hour Battery"],
+            category: "laptops"
+          },
+          { 
+            name: "Lenovo Yoga Slim", 
+            price: 88000, 
+            desc: "Flexible 2-in-1 design with touchscreen display and premium aluminum body.", 
+            images: [
+              "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?w=500&h=400&fit=crop"
+            ],
+            features: ["Intel Core i5 Processor", "12GB RAM", "512GB SSD", "14\" Touch Display", "2-in-1 Design"],
+            category: "laptops"
+          },
+          { 
+            name: "Acer Aspire 5", 
+            price: 54000, 
+            desc: "Budget-friendly and efficient daily use laptop with reliable performance.", 
+            images: [
+              "https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&h=400&fit=crop"
+            ],
+            features: ["Intel Core i3 Processor", "8GB RAM", "256GB SSD", "15.6\" Display", "Windows 11"],
+            category: "laptops"
+          },
+          { 
+            name: "MSI Prestige 14", 
+            price: 112000, 
+            desc: "Premium performance and luxury design for creative professionals.", 
+            images: [
+              "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?w=500&h=400&fit=crop"
+            ],
+            features: ["Intel Core i7 Processor", "16GB RAM", "1TB SSD", "14\" 4K Display", "Lightweight Design"],
+            category: "laptops"
+          },
+          { 
+            name: "Samsung Galaxy Book3", 
+            price: 89000, 
+            desc: "Super thin AMOLED laptop from Samsung with stunning display and premium features.", 
+            images: [
+              "https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&h=400&fit=crop"
+            ],
+            features: ["Intel Core i5 Processor", "16GB RAM", "512GB SSD", "15.6\" AMOLED", "Samsung Ecosystem"],
+            category: "laptops"
+          }
+        ],
+        mobiles: [
+          { 
+            name: "Samsung S24 Ultra", 
+            price: 125000, 
+            desc: "Flagship smartphone with 200MP camera, AI zoom capabilities, and S Pen integration.", 
+            images: [
+              "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=500&h=400&fit=crop"
+            ],
+            features: ["200MP Main Camera", "S Pen Included", "Snapdragon 8 Gen 3", "12GB RAM", "1TB Storage"],
+            category: "mobiles"
+          },
+          { 
+            name: "iPhone 15 Pro", 
+            price: 148000, 
+            desc: "Titanium body, A17 Pro chip, ProMotion display, and advanced camera system.", 
+            images: [
+              "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&h=400&fit=crop"
+            ],
+            features: ["A17 Pro Chip", "Titanium Design", "ProMotion Display", "48MP Main Camera", "iOS 17"],
+            category: "mobiles"
+          },
+          { 
+            name: "Vivo V30", 
+            price: 32000, 
+            desc: "Stylish phone with powerful camera system and elegant design.", 
+            images: [
+              "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=500&h=400&fit=crop"
+            ],
+            features: ["50MP Selfie Camera", "Snapdragon 7 Gen 3", "8GB RAM", "256GB Storage", "AMOLED Display"],
+            category: "mobiles"
+          },
+          { 
+            name: "Oppo Reno 12", 
+            price: 37000, 
+            desc: "Slim, elegant design with AI photo features and fast charging.", 
+            images: [
+              "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&h=400&fit=crop"
+            ],
+            features: ["AI Portrait Camera", "MediaTek Dimensity Chip", "12GB RAM", "67W Fast Charging", "Slim Design"],
+            category: "mobiles"
+          },
+          { 
+            name: "OnePlus 12R", 
+            price: 54000, 
+            desc: "Performance and style redefined with flagship features at competitive price.", 
+            images: [
+              "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=500&h=400&fit=crop"
+            ],
+            features: ["Snapdragon 8 Gen 2", "120Hz AMOLED", "16GB RAM", "100W Charging", "OxygenOS"],
+            category: "mobiles"
+          },
+          { 
+            name: "Realme GT Neo 6", 
+            price: 28000, 
+            desc: "Gaming power in a budget smartphone with high refresh rate display.", 
+            images: [
+              "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&h=400&fit=crop"
+            ],
+            features: ["MediaTek Dimensity", "144Hz Display", "8GB RAM", "5000mAh Battery", "Gaming Mode"],
+            category: "mobiles"
+          },
+          { 
+            name: "Pixel 8", 
+            price: 89000, 
+            desc: "Clean Android experience with AI photography and Google ecosystem.", 
+            images: [
+              "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=500&h=400&fit=crop"
+            ],
+            features: ["Google Tensor G3", "AI Camera Features", "8GB RAM", "Stock Android", "7 Years Updates"],
+            category: "mobiles"
+          },
+          { 
+            name: "Nothing Phone 2", 
+            price: 54000, 
+            desc: "Unique transparent design with glyph interface and clean software.", 
+            images: [
+              "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&h=400&fit=crop"
+            ],
+            features: ["Transparent Design", "Glyph Interface", "Snapdragon 8+ Gen 1", "12GB RAM", "Nothing OS"],
+            category: "mobiles"
+          }
+        ],
+        tvs: [
+          { 
+            name: "Samsung QLED 55\"", 
+            price: 89000, 
+            desc: "Cinematic experience with HDR10+, Quantum Dot technology, and smart features.", 
+            images: [
+              "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1571415060716-baff5f5c1bb9?w=500&h=400&fit=crop"
+            ],
+            features: ["QLED Display", "HDR10+", "Smart TV", "55\" Screen", "Quantum Processor"],
+            category: "tvs"
+          },
+          { 
+            name: "Sony Bravia 65\"", 
+            price: 135000, 
+            desc: "4K HDR OLED Smart TV with Acoustic Surface Audio+ and Google TV.", 
+            images: [
+              "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1571415060716-baff5f5c1bb9?w=500&h=400&fit=crop"
+            ],
+            features: ["OLED Display", "4K HDR", "Google TV", "65\" Screen", "Acoustic Surface Audio"],
+            category: "tvs"
+          },
+          { 
+            name: "LG OLED C3", 
+            price: 145000, 
+            desc: "Perfect blacks and Dolby Vision with α9 Gen6 AI Processor 4K.", 
+            images: [
+              "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1571415060716-baff5f5c1bb9?w=500&h=400&fit=crop"
+            ],
+            features: ["OLED evo", "Dolby Vision", "webOS", "α9 AI Processor", "Perfect Black"],
+            category: "tvs"
+          },
+          { 
+            name: "Mi 55\" 4K TV", 
+            price: 45000, 
+            desc: "Android TV with Dolby Audio, PatchWall, and affordable pricing.", 
+            images: [
+              "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1571415060716-baff5f5c1bb9?w=500&h=400&fit=crop"
+            ],
+            features: ["4K Display", "Android TV", "Dolby Audio", "55\" Screen", "PatchWall"],
+            category: "tvs"
+          },
+          { 
+            name: "OnePlus Q2 Pro", 
+            price: 72000, 
+            desc: "QLED brilliance at midrange price with OxygenOS TV.", 
+            images: [
+              "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1571415060716-baff5f5c1bb9?w=500&h=400&fit=crop"
+            ],
+            features: ["QLED Display", "OxygenOS TV", "50W Speaker", "Dolby Atmos", "Game Mode"],
+            category: "tvs"
+          },
+          { 
+            name: "TCL 4K Smart TV", 
+            price: 38000, 
+            desc: "Affordable smart experience with Google TV and HDR Pro.", 
+            images: [
+              "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1571415060716-baff5f5c1bb9?w=500&h=400&fit=crop"
+            ],
+            features: ["4K UHD", "Google TV", "HDR Pro", "Dolby Vision", "Affordable Price"],
+            category: "tvs"
+          },
+          { 
+            name: "Panasonic 50\"", 
+            price: 52000, 
+            desc: "True 4K display and wide color range with My Home Screen.", 
+            images: [
+              "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1571415060716-baff5f5c1bb9?w=500&h=400&fit=crop"
+            ],
+            features: ["4K LED", "My Home Screen", "HCX Processor", "50\" Screen", "Wide Color"],
+            category: "tvs"
+          },
+          { 
+            name: "Hisense 65\"", 
+            price: 63000, 
+            desc: "Dolby Vision & DTS Audio with ULED technology and voice remote.", 
+            images: [
+              "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1571415060716-baff5f5c1bb9?w=500&h=400&fit=crop"
+            ],
+            features: ["ULED Technology", "Dolby Vision", "DTS Audio", "Voice Remote", "65\" Screen"],
+            category: "tvs"
+          }
+        ],
+        tablets: [
+          { 
+            name: "iPad Pro M2", 
+            price: 120000, 
+            desc: "Apple Pencil 2, Magic Keyboard support, and powerful M2 chip for professionals.", 
+            images: [
+              "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1561154464-82e9adf32764?w=500&h=400&fit=crop"
+            ],
+            features: ["M2 Chip", "Apple Pencil 2", "Magic Keyboard", "Liquid Retina XDR", "Pro Performance"],
+            category: "tablets"
+          },
+          { 
+            name: "Samsung Tab S9", 
+            price: 95000, 
+            desc: "AMOLED display and DeX mode for desktop-like experience.", 
+            images: [
+              "https://images.unsplash.com/photo-1561154464-82e9adf32764?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500&h=400&fit=crop"
+            ],
+            features: ["AMOLED Display", "S Pen Included", "DeX Mode", "Snapdragon 8 Gen 2", "5G Connectivity"],
+            category: "tablets"
+          },
+          { 
+            name: "Lenovo Tab P11", 
+            price: 28000, 
+            desc: "All-day battery and Dolby sound for entertainment and productivity.", 
+            images: [
+              "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1561154464-82e9adf32764?w=500&h=400&fit=crop"
+            ],
+            features: ["11\" Display", "All-day Battery", "Dolby Atmos", "Keyboard Support", "Affordable"],
+            category: "tablets"
+          },
+          { 
+            name: "Xiaomi Pad 6", 
+            price: 32000, 
+            desc: "120Hz display and Snapdragon chip for smooth performance.", 
+            images: [
+              "https://images.unsplash.com/photo-1561154464-82e9adf32764?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500&h=400&fit=crop"
+            ],
+            features: ["120Hz Display", "Snapdragon 870", "MIUI for Pad", "Stylus Support", "Fast Charging"],
+            category: "tablets"
+          },
+          { 
+            name: "Oppo Pad 2", 
+            price: 39000, 
+            desc: "Stylish and powerful tablet with premium design and features.", 
+            images: [
+              "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1561154464-82e9adf32764?w=500&h=400&fit=crop"
+            ],
+            features: ["Premium Design", "ColorOS", "Stylus Support", "Fast Performance", "Slim Bezels"],
+            category: "tablets"
+          },
+          { 
+            name: "Realme Pad X", 
+            price: 25000, 
+            desc: "Compact tablet with long battery life and entertainment features.", 
+            images: [
+              "https://images.unsplash.com/photo-1561154464-82e9adf32764?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500&h=400&fit=crop"
+            ],
+            features: ["Compact Size", "Long Battery", "Entertainment Focus", "Lightweight", "Affordable"],
+            category: "tablets"
+          },
+          { 
+            name: "Huawei MatePad", 
+            price: 42000, 
+            desc: "Great for reading and streaming with Harman Kardon tuned speakers.", 
+            images: [
+              "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1561154464-82e9adf32764?w=500&h=400&fit=crop"
+            ],
+            features: ["2K Display", "Harman Kardon Audio", "Reading Mode", "Huawei Ecosystem", "Premium Build"],
+            category: "tablets"
+          },
+          { 
+            name: "Microsoft Surface Go 3", 
+            price: 62000, 
+            desc: "Hybrid performance tablet with Windows 11 and laptop capabilities.", 
+            images: [
+              "https://images.unsplash.com/photo-1561154464-82e9adf32764?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500&h=400&fit=crop"
+            ],
+            features: ["Windows 11", "Laptop Mode", "Surface Pen", "Intel Processor", "Portable Design"],
+            category: "tablets"
+          }
+        ],
+        accessories: [
+          { 
+            name: "Sony WH-1000XM5", 
+            price: 32000, 
+            desc: "Industry-leading noise cancellation with 30-hour battery life and premium sound.", 
+            images: [
+              "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=400&fit=crop"
+            ],
+            features: ["Industry-best ANC", "30-hour Battery", "Premium Sound", "Comfortable Fit", "Touch Controls"],
+            category: "accessories"
+          },
+          { 
+            name: "Apple AirPods Pro 2", 
+            price: 28000, 
+            desc: "Spatial audio and active noise cancellation with MagSafe charging case.", 
+            images: [
+              "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=500&h=400&fit=crop"
+            ],
+            features: ["Active Noise Cancel", "Spatial Audio", "MagSafe Case", "H2 Chip", "Apple Ecosystem"],
+            category: "accessories"
+          },
+          { 
+            name: "Logitech MX Master 3S", 
+            price: 9500, 
+            desc: "Best productivity mouse with ergonomic design and customizable buttons.", 
+            images: [
+              "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1527814050087-3793815479db?w=500&h=400&fit=crop"
+            ],
+            features: ["Ergonomic Design", "Customizable Buttons", "Precision Scroll", "Multi-device", "8K DPI"],
+            category: "accessories"
+          },
+          { 
+            name: "Samsung 25W Charger", 
+            price: 1800, 
+            desc: "Super fast charger compatible with Samsung devices and other smartphones.", 
+            images: [
+              "https://images.unsplash.com/photo-1609592810795-13b5ba8f10b2?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1606170033645-5b7a5dbb5d35?w=500&h=400&fit=crop"
+            ],
+            features: ["25W Fast Charging", "Samsung Compatible", "Compact Design", "Safety Certified", "USB-C"],
+            category: "accessories"
+          },
+          { 
+            name: "Anker Powerbank 20000mAh", 
+            price: 3200, 
+            desc: "Portable high capacity power bank with fast charging and multiple ports.", 
+            images: [
+              "https://images.unsplash.com/photo-1609592810795-13b5ba8f10b2?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1606170033645-5b7a5dbb5d35?w=500&h=400&fit=crop"
+            ],
+            features: ["20000mAh Capacity", "Fast Charging", "Multiple Ports", "Portable", "LED Indicator"],
+            category: "accessories"
+          },
+          { 
+            name: "Belkin USB-C Hub", 
+            price: 4100, 
+            desc: "All-in-one connection solution with multiple ports for laptops and tablets.", 
+            images: [
+              "https://images.unsplash.com/photo-1527814050087-3793815479db?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500&h=400&fit=crop"
+            ],
+            features: ["7-in-1 Hub", "4K HDMI", "USB 3.0", "Ethernet", "SD Card Reader"],
+            category: "accessories"
+          },
+          { 
+            name: "JBL Flip 6", 
+            price: 8900, 
+            desc: "Powerful portable speaker with waterproof design and party boost feature.", 
+            images: [
+              "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1529963183134-61a90db47eaf?w=500&h=400&fit=crop"
+            ],
+            features: ["Waterproof", "PartyBoost", "12-hour Battery", "JBL Sound", "Portable"],
+            category: "accessories"
+          },
+          { 
+            name: "WD My Passport 1TB", 
+            price: 5600, 
+            desc: "External HDD for backup with password protection and automatic backup.", 
+            images: [
+              "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=500&h=400&fit=crop",
+              "https://images.unsplash.com/photo-1558618666-fcd25856cd61?w=500&h=400&fit=crop"
+            ],
+            features: ["1TB Storage", "Password Protection", "Automatic Backup", "Compact", "USB 3.0"],
+            category: "accessories"
+          }
+        ]
+      };
+      
+      // 🔹 Function to render products dynamically
+      function renderProducts(category, containerId) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = "";
+        products[category].forEach((p, i) => {
+          const card = document.createElement("div");
+          card.className = "col-lg-3 col-md-4 col-sm-6 mb-4";
+          card.innerHTML = `
+            <div class="card product-card h-100" onclick="openProductModal('${category}', ${i})">
+              <img src="${p.images[0]}" class="card-img-top" alt="${p.name}" onerror="this.src='https://via.placeholder.com/300x200?text=Product+Image'">
+              <div class="card-body text-center">
+                <h6 class="card-title">${p.name}</h6>
+                <p class="text-primary fw-bold mb-0">₹${p.price.toLocaleString()}</p>
+                <small class="text-muted">${p.desc.substring(0, 60)}...</small>
+              </div>
+            </div>`;
+          container.appendChild(card);
+        });
+      }
+      
+      // 🔹 Initialize all categories
+      document.addEventListener("DOMContentLoaded", () => {
+        renderProducts("laptops", "laptopSection");
+        renderProducts("mobiles", "mobileSection");
+        renderProducts("tvs", "tvSection");
+        renderProducts("tablets", "tabletSection");
+        renderProducts("accessories", "accessorySection");
+        updateCartBadge();
+        updateUI();
+        
+        // Initialize event listeners
+        document.getElementById('cartButton').addEventListener('click', openCartModal);
+        document.getElementById('logoutBtn').addEventListener('click', logout);
+        document.getElementById('checkoutBtn').addEventListener('click', checkout);
+        document.getElementById('loginForm').addEventListener('submit', handleLogin);
+        document.getElementById('signupForm').addEventListener('submit', handleSignup);
+        document.getElementById('feedbackForm').addEventListener('submit', handleFeedback);
+        document.getElementById('companyLoginForm').addEventListener('submit', handleCompanyLogin);
+        document.getElementById('companySignupForm').addEventListener('submit', handleCompanySignup);
+        document.getElementById('searchBtn').addEventListener('click', handleSearch);
+        document.getElementById('searchInput').addEventListener('input', handleSearch);
+        document.getElementById('searchInput').addEventListener('keyup', function(e) {
+          if (e.key === 'Enter') {
+            handleSearch();
+          }
+        });
+        
+        // Initialize rating stars
+        initializeRatingStars();
+        
+        // Initialize tab functionality
+        initializeTabs();
+        
+        // Load account details if logged in
+        loadAccountDetails();
+      });
+      
+      // 🔹 Product modal popup
+      function openProductModal(category, index) {
+        const product = products[category][index];
+        document.getElementById("productModalLabel").innerText = product.name;
+        document.getElementById("productDesc").innerText = product.desc;
+        document.getElementById("productPrice").innerText = "₹" + product.price.toLocaleString();
+        
+        const imgContainer = document.getElementById("productImages");
+        imgContainer.innerHTML = product.images.map(
+          (src, i) =>
+            `<div class="carousel-item ${i === 0 ? "active" : ""}">
+              <img src="${src}" class="d-block w-100 carousel-image" alt="${product.name} Image ${i+1}" onerror="this.src='https://via.placeholder.com/500x400?text=Product+Image'">
+            </div>`
+        ).join("");
+        
+        const modal = new bootstrap.Modal(document.getElementById("productModal"));
+        modal.show();
+        
+        document.getElementById("addToCartBtn").onclick = () => addToCart(product);
+      }
+      
+      // 🔹 Add to Cart (requires login)
+      function addToCart(product) {
+        const user = JSON.parse(localStorage.getItem("user") || "null");
+        if (!user) {
+          alert("Please login before adding to cart!");
+          const loginModal = new bootstrap.Modal(document.getElementById("loginModal"));
+          loginModal.show();
+          return;
+        }
+        
+        let cart = JSON.parse(localStorage.getItem("jn_cart") || "[]");
+        cart.push(product);
+        localStorage.setItem("jn_cart", JSON.stringify(cart));
+        updateCartBadge();
+        
+        // Close product modal
+        const productModal = bootstrap.Modal.getInstance(document.getElementById("productModal"));
+        productModal.hide();
+        
+        confirmOrderPopup();
+      }
+      
+      // 🔹 Update cart badge
+      function updateCartBadge() {
+        const cart = JSON.parse(localStorage.getItem("jn_cart") || "[]");
+        const badge = document.getElementById("cartBadge");
+        if (cart.length > 0) {
+          badge.style.display = "block";
+          badge.textContent = cart.length;
+        } else {
+          badge.style.display = "none";
+        }
+      }
+      
+      // 🔹 Open cart modal
+      function openCartModal() {
+        const cart = JSON.parse(localStorage.getItem("jn_cart") || "[]");
+        const cartItems = document.getElementById("cartItems");
+        const checkoutBtn = document.getElementById("checkoutBtn");
+        
+        if (cart.length === 0) {
+          cartItems.innerHTML = '<p class="text-center py-4">Your cart is empty</p>';
+          checkoutBtn.style.display = "none";
+        } else {
+          let total = 0;
+          cartItems.innerHTML = cart.map(item => {
+            total += item.price;
+            return `
+              <div class="d-flex justify-content-between align-items-center mb-3 p-3 border rounded">
+                <div class="d-flex align-items-center">
+                  <img src="${item.images[0]}" class="rounded me-3" width="60" height="60" style="object-fit: cover;" alt="${item.name}" onerror="this.src='https://via.placeholder.com/60x60?text=Image'">
+                  <div>
+                    <h6 class="mb-1">${item.name}</h6>
+                    <small class="text-muted">${item.desc.substring(0, 50)}...</small>
+                  </div>
+                </div>
+                <div class="text-end">
+                  <div class="fw-bold text-primary">₹${item.price.toLocaleString()}</div>
+                  <button class="btn btn-sm btn-outline-danger mt-1" onclick="removeFromCart('${item.name}')">
+                    <i class="fas fa-trash"></i> Remove
+                  </button>
+                </div>
+              </div>
+            `;
+          }).join('') + `
+            <div class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
+              <h5 class="mb-0">Total Amount:</h5>
+              <h5 class="text-primary mb-0">₹${total.toLocaleString()}</h5>
+            </div>
+          `;
+          checkoutBtn.style.display = "block";
+        }
+        
+        const modal = new bootstrap.Modal(document.getElementById("cartModal"));
+        modal.show();
+      }
+      
+      // 🔹 Remove from cart
+      function removeFromCart(productName) {
+        let cart = JSON.parse(localStorage.getItem("jn_cart") || "[]");
+        cart = cart.filter(item => item.name !== productName);
+        localStorage.setItem("jn_cart", JSON.stringify(cart));
+        updateCartBadge();
+        openCartModal();
+      }
+      
+      // 🔹 Checkout function
+      async function checkout() {
+        const cart = JSON.parse(localStorage.getItem("jn_cart") || "[]");
+        if (cart.length === 0) {
+          alert("Your cart is empty!");
+          return;
+        }
+
+        const user = JSON.parse(localStorage.getItem("user") || "null");
+        if (!user) {
+          alert("Please login to checkout!");
+          return;
+        }
+
+        const total = cart.reduce((sum, item) => sum + item.price, 0);
+        
+        try {
+          // Create order in database
+          const response = await fetch(`${API_BASE}/orders`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              userId: user.id,
+              items: cart,
+              totalAmount: total,
+              shippingAddress: {
+                name: user.name,
+                address: user.address || 'Not provided',
+                city: 'Pathanamthitta',
+                phone: 'Not provided'
+              }
+            })
+          });
+
+          const result = await response.json();
+
+          if (result.success) {
+            // Show gift unboxing animation
+            showGiftUnboxing(total);
+            
+            // Clear cart
+            localStorage.removeItem("jn_cart");
+            updateCartBadge();
+            
+            const modal = bootstrap.Modal.getInstance(document.getElementById("cartModal"));
+            modal.hide();
+          } else {
+            alert("Failed to create order: " + result.message);
+          }
+        } catch (error) {
+          console.error('Checkout error:', error);
+          alert("Error creating order. Please try again.");
+        }
+      }
+      
+      // 🔹 Gift unboxing animation
+      function showGiftUnboxing(total) {
+        const wrapper = document.createElement("div");
+        wrapper.innerHTML = `
+        <div class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 d-flex align-items-center justify-content-center" style="z-index:9999;">
+          <div class="bg-white text-center p-5 rounded shadow-lg animate-popup">
+            <div class="gift-box" id="giftBox">
+              <div class="gift-lid"></div>
+              <i class="fas fa-gift"></i>
+            </div>
+            <h4 class="text-success mt-4 mb-2">Order Confirmed!</h4>
+            <p class="mb-2">Your order of ₹${total.toLocaleString()} is on the way 🎁</p>
+            <p class="text-muted">Thank you for shopping with JN Electronics!</p>
+          </div>
+        </div>`;
+        document.body.appendChild(wrapper);
+        
+        // Add confetti
+        createConfetti();
+        
+        // Animate gift opening after 2 seconds
+        setTimeout(() => {
+          const giftBox = document.getElementById("giftBox");
+          giftBox.classList.add("gift-open");
+          
+          // Show success message after animation
+          setTimeout(() => {
+            wrapper.remove();
+            alert("Order placed successfully! You will receive a confirmation email shortly.");
+          }, 1500);
+        }, 2000);
+      }
+
+      // 🔹 Create confetti effect
+      function createConfetti() {
+        const colors = ['#f94144', '#f3722c', '#f8961e', '#f9c74f', '#90be6d', '#43aa8b', '#577590'];
+        for (let i = 0; i < 100; i++) {
+          const confetti = document.createElement('div');
+          confetti.className = 'confetti';
+          confetti.style.left = Math.random() * 100 + 'vw';
+          confetti.style.top = '-10px';
+          confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+          confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+          document.body.appendChild(confetti);
+          
+          // Animate confetti
+          const animation = confetti.animate([
+            { top: '-10px', opacity: 1 },
+            { top: '100vh', opacity: 0 }
+          ], {
+            duration: 2000 + Math.random() * 3000,
+            easing: 'cubic-bezier(0.1, 0.8, 0.2, 1)'
+          });
+          
+          animation.onfinish = () => confetti.remove();
+        }
+      }
+      /*
+      // 🔹 Auth functions
+      async function handleLogin(e) {
+        e.preventDefault();
+        const email = document.getElementById("loginEmail").value;
+        const password = document.getElementById("loginPassword").value;
+        
+        try {
+          const response = await fetch(`${API_BASE}/auth/login`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+          });
+
+          const result = await response.json();
+
+          if (result.success) {
+            localStorage.setItem("user", JSON.stringify(result.user));
+            updateUI();
+            bootstrap.Modal.getInstance(document.getElementById("loginModal")).hide();
+            document.getElementById("loginMessage").innerHTML = '<div class="alert alert-success">Login successful!</div>';
+            document.getElementById("loginForm").reset();
+            loadAccountDetails();
+          } else {
+            document.getElementById("loginMessage").innerHTML = `<div class="alert alert-danger">${result.message}</div>`;
+          }
+        } catch (error) {
+          document.getElementById("loginMessage").innerHTML = '<div class="alert alert-danger">Login failed. Please try again.</div>';
+        }
+      }
+      
+      async function handleSignup(e) {
+        e.preventDefault();
+        const name = document.getElementById("signupName").value;
+        const email = document.getElementById("signupEmail").value;
+        const password = document.getElementById("signupPassword").value;
+        
+        try {
+          const response = await fetch(`${API_BASE}/auth/register`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name, email, password, type: "customer" })
+          });
+
+          const result = await response.json();
+
+          if (result.success) {
+            document.getElementById("signupMessage").innerHTML = '<div class="alert alert-success">Signup successful! You can now login.</div>';
+            document.getElementById("signupForm").reset();
+            
+            setTimeout(() => {
+              bootstrap.Modal.getInstance(document.getElementById("signupModal")).hide();
+              const loginModal = new bootstrap.Modal(document.getElementById("loginModal"));
+              loginModal.show();
+            }, 1500);
+          } else {
+            document.getElementById("signupMessage").innerHTML = `<div class="alert alert-danger">${result.message}</div>`;
+          }
+        } catch (error) {
+          document.getElementById("signupMessage").innerHTML = '<div class="alert alert-danger">Signup failed. Please try again.</div>';
+        }
+      }
+      
+      async function handleCompanyLogin(e) {
+        e.preventDefault();
+        const email = document.getElementById("companyEmail").value;
+        const password = document.getElementById("companyPassword").value;
+        
+        try {
+          const response = await fetch(`${API_BASE}/auth/login`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+          });
+
+          const result = await response.json();
+
+          if (result.success) {
+            localStorage.setItem("user", JSON.stringify(result.user));
+            updateUI();
+            bootstrap.Modal.getInstance(document.getElementById("loginModal")).hide();
+            document.getElementById("loginMessage").innerHTML = '<div class="alert alert-success">Company login successful!</div>';
+            document.getElementById("companyLoginForm").reset();
+            loadAccountDetails();
+          } else {
+            document.getElementById("loginMessage").innerHTML = `<div class="alert alert-danger">${result.message}</div>`;
+          }
+        } catch (error) {
+          document.getElementById("loginMessage").innerHTML = '<div class="alert alert-danger">Login failed. Please try again.</div>';
+        }
+      }
+      
+      async function handleCompanySignup(e) {
+        e.preventDefault();
+        const name = document.getElementById("companyName").value;
+        const email = document.getElementById("companyRegEmail").value;
+        const password = document.getElementById("companyRegPassword").value;
+        const address = document.getElementById("companyAddress").value;
+        
+        try {
+          const response = await fetch(`${API_BASE}/auth/register`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name, email, password, type: "company", address })
+          });
+
+          const result = await response.json();
+
+          if (result.success) {
+            document.getElementById("signupMessage").innerHTML = '<div class="alert alert-success">Company registration successful! You can now login.</div>';
+            document.getElementById("companySignupForm").reset();
+            
+            setTimeout(() => {
+              bootstrap.Modal.getInstance(document.getElementById("signupModal")).hide();
+              const loginModal = new bootstrap.Modal(document.getElementById("loginModal"));
+              loginModal.show();
+            }, 1500);
+          } else {
+            document.getElementById("signupMessage").innerHTML = `<div class="alert alert-danger">${result.message}</div>`;
+          }
+        } catch (error) {
+          document.getElementById("signupMessage").innerHTML = '<div class="alert alert-danger">Registration failed. Please try again.</div>';
+        }
+      }
+      
+      function logout() {
+        localStorage.removeItem("user");
+        localStorage.removeItem("jn_cart");
+        updateUI();
+        alert("Logged out successfully!");
+        loadAccountDetails();
+      }
+      
+      function updateUI() {
+        const user = JSON.parse(localStorage.getItem("user") || "null");
+        if (user) {
+          document.getElementById("userNameText").innerText = user.name || user.email;
+          document.getElementById("logoutBtn").style.display = "block";
+          document.getElementById("myOrdersBtn").style.display = "block";
+          
+          // Show admin panel button if user is admin
+          const adminBtn = document.getElementById("admin-panel-btn");
+          if (adminBtn) {
+            adminBtn.style.display = ADMIN_EMAILS.includes(user.email) ? "inline-block" : "none";
+          }
+        } else {
+          document.getElementById("userNameText").innerText = "Account";
+          document.getElementById("logoutBtn").style.display = "none";
+          document.getElementById("admin-panel-btn").style.display = "none";
+          document.getElementById("myOrdersBtn").style.display = "none";
+        }
+      }
+      */
+
+      // ✅ Define the base API URL
+
+
+// ✅ Handle Customer Login
+async function handleLogin(e) {
+  e.preventDefault();
+  const email = document.getElementById("loginEmail").value;
+  const password = document.getElementById("loginPassword").value;
+
+  try {
+    const response = await fetch(`${API_BASE}/auth/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      localStorage.setItem("user", JSON.stringify(result.user));
+      updateUI();
+      bootstrap.Modal.getInstance(document.getElementById("loginModal")).hide();
+      document.getElementById("loginMessage").innerHTML =
+        '<div class="alert alert-success">Login successful!</div>';
+      document.getElementById("loginForm").reset();
+      loadAccountDetails();
+    } else {
+      document.getElementById("loginMessage").innerHTML = 
+        `<div class="alert alert-danger">${result.message || "Invalid credentials"}</div>`;
+    }
+  } catch (error) {
+    document.getElementById("loginMessage").innerHTML =
+      '<div class="alert alert-danger">Login failed. Please try again.</div>';
+    console.error(error);
+  }
+}
+
+// ✅ Handle Customer Signup
+async function handleSignup(e) {
+  e.preventDefault();
+  const name = document.getElementById("signupName").value;
+  const email = document.getElementById("signupEmail").value;
+  const password = document.getElementById("signupPassword").value;
+
+  try {
+    const response = await fetch(`${API_BASE}/auth/signup`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, password, type: "customer" }),
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      document.getElementById("signupMessage").innerHTML =
+        '<div class="alert alert-success">Signup successful! You can now login.</div>';
+      document.getElementById("signupForm").reset();
+
+      setTimeout(() => {
+        bootstrap.Modal.getInstance(document.getElementById("signupModal")).hide();
+        const loginModal = new bootstrap.Modal(document.getElementById("loginModal"));
+        loginModal.show();
+      }, 1500);
+    } else {
+      document.getElementById("signupMessage").innerHTML =
+        `<div class="alert alert-danger">${result.message || "Signup failed!"}</div>`;
+    }
+  } catch (error) {
+    document.getElementById("signupMessage").innerHTML =
+      '<div class="alert alert-danger">Signup failed. Please try again.</div>';
+    console.error(error);
+  }
+}
+
+// ✅ Handle Company Login
+async function handleCompanyLogin(e) {
+  e.preventDefault();
+  const email = document.getElementById("companyEmail").value;
+  const password = document.getElementById("companyPassword").value;
+
+  try {
+    const response = await fetch(`${API_BASE}/auth/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      localStorage.setItem("user", JSON.stringify(result.user));
+      updateUI();
+      bootstrap.Modal.getInstance(document.getElementById("loginModal")).hide();
+      document.getElementById("loginMessage").innerHTML =
+        '<div class="alert alert-success">Company login successful!</div>';
+      document.getElementById("companyLoginForm").reset();
+      loadAccountDetails();
+    } else {
+      document.getElementById("loginMessage").innerHTML =
+        `<div class="alert alert-danger">${result.message || "Invalid credentials"}</div>`;
+    }
+  } catch (error) {
+    document.getElementById("loginMessage").innerHTML =
+      '<div class="alert alert-danger">Login failed. Please try again.</div>';
+    console.error(error);
+  }
+}
+
+// ✅ Handle Company Signup
+async function handleCompanySignup(e) {
+  e.preventDefault();
+  const name = document.getElementById("companyName").value;
+  const email = document.getElementById("companyRegEmail").value;
+  const password = document.getElementById("companyRegPassword").value;
+  const address = document.getElementById("companyAddress").value;
+
+  try {
+    const response = await fetch(`${API_BASE}/auth/signup`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, password, type: "company", address }),
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      document.getElementById("signupMessage").innerHTML =
+        '<div class="alert alert-success">Company registration successful! You can now login.</div>';
+      document.getElementById("companySignupForm").reset();
+
+      setTimeout(() => {
+        bootstrap.Modal.getInstance(document.getElementById("signupModal")).hide();
+        const loginModal = new bootstrap.Modal(document.getElementById("loginModal"));
+        loginModal.show();
+      }, 1500);
+    } else {
+      document.getElementById("signupMessage").innerHTML =
+        `<div class="alert alert-danger">${result.message || "Signup failed!"}</div>`;
+    }
+  } catch (error) {
+    document.getElementById("signupMessage").innerHTML =
+      '<div class="alert alert-danger">Registration failed. Please try again.</div>';
+    console.error(error);
+  }
+}
+
+// ✅ Logout
+function logout() {
+  localStorage.removeItem("user");
+  localStorage.removeItem("jn_cart");
+  updateUI();
+  alert("Logged out successfully!");
+  loadAccountDetails();
+}
+
+// ✅ Update UI After Login/Logout
+function updateUI() {
+  const user = JSON.parse(localStorage.getItem("user") || "null");
+  const adminBtn = document.getElementById("admin-panel-btn");
+
+  if (user) {
+    document.getElementById("userNameText").innerText = user.name || user.email;
+    document.getElementById("logoutBtn").style.display = "block";
+    document.getElementById("myOrdersBtn").style.display = "block";
+
+    if (adminBtn) {
+      adminBtn.style.display = ADMIN_EMAILS.includes(user.email)
+        ? "inline-block"
+        : "none";
+    }
+  } else {
+    document.getElementById("userNameText").innerText = "Account";
+    document.getElementById("logoutBtn").style.display = "none";
+    document.getElementById("admin-panel-btn").style.display = "none";
+    document.getElementById("myOrdersBtn").style.display = "none";
+  }
+}
+
+      // 🔹 Feedback functions
+      function initializeRatingStars() {
+        const stars = document.querySelectorAll('.rating-star');
+        stars.forEach(star => {
+          star.addEventListener('click', function() {
+            const rating = this.getAttribute('data-rating');
+            setRating(rating);
+          });
+        });
+      }
+      
+      function setRating(rating) {
+        const stars = document.querySelectorAll('.rating-star');
+        stars.forEach(star => {
+          if (star.getAttribute('data-rating') <= rating) {
+            star.classList.remove('far');
+            star.classList.add('fas', 'text-warning');
+          } else {
+            star.classList.remove('fas', 'text-warning');
+            star.classList.add('far');
+          }
+        });
+      }
+      
+      async function handleFeedback(e) {
+        e.preventDefault();
+        const name = document.getElementById("feedbackName").value;
+        const email = document.getElementById("feedbackEmail").value;
+        const message = document.getElementById("feedbackMessage").value;
+        
+        // Get rating
+        const activeStars = document.querySelectorAll('.rating-star.fas');
+        const rating = activeStars.length;
+        
+        if (rating === 0) {
+          alert("Please provide a rating!");
+          return;
+        }
+        
+        try {
+          const response = await fetch(`${API_BASE}/feedback`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name, email, message, rating })
+          });
+
+          const result = await response.json();
+
+          if (result.success) {
+            alert("Thank you for your feedback!");
+            document.getElementById("feedbackForm").reset();
+            
+            // Reset stars
+            const stars = document.querySelectorAll('.rating-star');
+            stars.forEach(star => {
+              star.classList.remove('fas', 'text-warning');
+              star.classList.add('far');
+            });
+          } else {
+            alert("Failed to submit feedback: " + result.message);
+          }
+        } catch (error) {
+          alert("Error submitting feedback. Please try again.");
+        }
+      }
+      
+      // 🔹 Simple order confirmation popup
+      function confirmOrderPopup() {
+        const wrapper = document.createElement("div");
+        wrapper.innerHTML = `
+        <div class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-flex align-items-center justify-content-center" style="z-index:9999;">
+          <div class="bg-white text-center p-4 rounded shadow-lg animate-popup" style="max-width:300px;">
+            <i class="fas fa-check-circle text-success fa-3x mb-3"></i>
+            <h4 class="text-success mb-2">Added to Cart!</h4>
+            <p>Product successfully added to your shopping cart</p>
+            <button class="btn btn-primary mt-2" id="closePopupBtn">OK</button>
+          </div>
+        </div>`;
+        document.body.appendChild(wrapper);
+        const closeBtn = wrapper.querySelector("#closePopupBtn");
+        closeBtn.addEventListener("click", () => wrapper.remove());
+        setTimeout(() => wrapper.remove(), 2500);
+      }
+
+      // ===== ORDER SYSTEM FUNCTIONS =====
+      async function showMyOrders() {
+        const user = JSON.parse(localStorage.getItem("user") || "null");
+        if (!user) {
+          alert("Please login to view orders!");
+          return;
+        }
+
+        document.getElementById("orders-section").style.display = "block";
+        document.getElementById("admin-section").style.display = "none";
+        
+        try {
+          const response = await fetch(`${API_BASE}/orders/user/${user.id}`);
+          const result = await response.json();
+
+          if (result.success) {
+            const ordersList = document.getElementById("orders-list");
+            
+            if (result.orders.length === 0) {
+              ordersList.innerHTML = '<p class="text-center">No orders found</p>';
+              return;
+            }
+
+            ordersList.innerHTML = result.orders.map(order => `
+              <div class="order-card">
+                <h4>🧾 Order #${order.orderId}</h4>
+                <p><b>Status:</b> <span class="${getStatusClass(order.status)}">${order.status}</span></p>
+                <p><b>Total:</b> ₹${order.totalAmount.toLocaleString()}</p>
+                <p><b>Items:</b> ${order.items.map(item => item.name).join(', ')}</p>
+                <p><b>Order Date:</b> ${new Date(order.createdAt).toLocaleDateString()}</p>
+              </div>
+            `).join('');
+          } else {
+            document.getElementById("orders-list").innerHTML = '<p class="text-center">Failed to load orders</p>';
+          }
+        } catch (error) {
+          console.error('Error loading orders:', error);
+          document.getElementById("orders-list").innerHTML = '<p class="text-center">Error loading orders</p>';
+        }
+      }
+
+      function getStatusClass(status) {
+        const statusClasses = {
+          'pending': 'text-warning',
+          'confirmed': 'text-info',
+          'shipped': 'text-primary',
+          'delivered': 'text-success',
+          'cancelled': 'text-danger'
+        };
+        return statusClasses[status] || 'text-secondary';
+      }
+
+      // ===== ADMIN PANEL =====
+      async function showAdminPanel() {
+        const user = JSON.parse(localStorage.getItem("user")) || null;
+        if (!user) return alert("Login as admin to continue.");
+        if (!ADMIN_EMAILS.includes(user.email)) return alert("Access denied!");
+
+        document.getElementById("admin-section").style.display = "block";
+        document.getElementById("orders-section").style.display = "none";
+
+        try {
+          const response = await fetch(`${API_BASE}/orders`);
+          const result = await response.json();
+
+          if (result.success) {
+            const adminDiv = document.getElementById("admin-orders");
+            
+            if (result.orders.length === 0) {
+              adminDiv.innerHTML = '<p class="text-center">No orders found</p>';
+              return;
+            }
+
+            adminDiv.innerHTML = result.orders.map(order => `
+              <div class="order-card">
+                <h4>👤 ${order.user.name} (${order.user.email})</h4>
+                <p><b>Order ID:</b> ${order.orderId}</p>
+                <p><b>Status:</b> <span class="${getStatusClass(order.status)}">${order.status}</span></p>
+                <p><b>Total:</b> ₹${order.totalAmount.toLocaleString()}</p>
+                <p><b>Items:</b> ${order.items.map(item => item.name).join(', ')}</p>
+                <p><b>Order Date:</b> ${new Date(order.createdAt).toLocaleDateString()}</p>
+                <div class="mt-3">
+                  <button class="btn btn-success btn-sm me-2" onclick="updateOrderStatus('${order._id}', 'confirmed')">✅ Confirm</button>
+                  <button class="btn btn-primary btn-sm me-2" onclick="updateOrderStatus('${order._id}', 'shipped')">🚚 Ship</button>
+                  <button class="btn btn-info btn-sm me-2" onclick="updateOrderStatus('${order._id}', 'delivered')">📦 Deliver</button>
+                  <button class="btn btn-danger btn-sm" onclick="updateOrderStatus('${order._id}', 'cancelled')">❌ Cancel</button>
+                </div>
+              </div>
+            `).join('');
+          } else {
+            document.getElementById("admin-orders").innerHTML = '<p class="text-center">Failed to load orders</p>';
+          }
+        } catch (error) {
+          console.error('Error loading admin orders:', error);
+          document.getElementById("admin-orders").innerHTML = '<p class="text-center">Error loading orders</p>';
+        }
+      }
+
+      async function updateOrderStatus(orderId, status) {
+        try {
+          const response = await fetch(`${API_BASE}/orders/${orderId}/status`, {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ status })
+          });
+
+          const result = await response.json();
+
+          if (result.success) {
+            alert(`Order status updated to ${status}!`);
+            showAdminPanel();
+          } else {
+            alert("Failed to update order status: " + result.message);
+          }
+        } catch (error) {
+          console.error('Error updating order status:', error);
+          alert("Error updating order status. Please try again.");
+        }
+      }
+      
+      // 🔹 Search functionality
+      function handleSearch() {
+        const query = document.getElementById("searchInput").value.toLowerCase();
+        const resultsContainer = document.getElementById("searchResults");
+        
+        if (query.length < 2) {
+          resultsContainer.style.display = "none";
+          return;
+        }
+        
+        // Flatten all products into a single array for searching
+        const allProducts = [];
+        Object.keys(products).forEach(category => {
+          products[category].forEach(product => {
+            allProducts.push({...product, category});
+          });
+        });
+        
+        // Filter products based on search query
+        const filteredProducts = allProducts.filter(product => 
+          product.name.toLowerCase().includes(query) || 
+          product.desc.toLowerCase().includes(query) ||
+          product.category.toLowerCase().includes(query)
+        );
+        
+        // Display results
+        if (filteredProducts.length > 0) {
+          resultsContainer.innerHTML = filteredProducts.map(product => `
+            <div class="search-result-item" onclick="openProductFromSearch('${product.category}', '${product.name}')">
+              <div class="d-flex align-items-center">
+                <img src="${product.images[0]}" width="40" height="40" style="object-fit: cover; border-radius: 5px;" alt="${product.name}">
+                <div class="ms-3">
+                  <div class="fw-bold">${product.name}</div>
+                  <small class="text-muted">₹${product.price.toLocaleString()} • ${product.category}</small>
+                </div>
+              </div>
+            </div>
+          `).join('');
+          resultsContainer.style.display = "block";
+        } else {
+          resultsContainer.innerHTML = '<div class="search-result-item">No products found</div>';
+          resultsContainer.style.display = "block";
+        }
+      }
+      
+      // 🔹 Open product from search results
+      function openProductFromSearch(category, productName) {
+        const categoryProducts = products[category];
+        const productIndex = categoryProducts.findIndex(p => p.name === productName);
+        
+        if (productIndex !== -1) {
+          openProductModal(category, productIndex);
+          document.getElementById("searchResults").style.display = "none";
+          document.getElementById("searchInput").value = "";
+        }
+      }
+      
+      // 🔹 Initialize tab functionality
+      function initializeTabs() {
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        tabButtons.forEach(button => {
+          button.addEventListener('click', function() {
+            const tab = this.getAttribute('data-tab');
+            
+            // Update active button
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Show corresponding content
+            document.querySelectorAll('.tab-content').forEach(content => {
+              content.classList.remove('active');
+            });
+            document.getElementById(`${tab}Login`).classList.add('active');
+            document.getElementById(`${tab}Signup`).classList.add('active');
+          });
+        });
+      }
+      
+      // 🔹 Load account details
+      function loadAccountDetails() {
+        const user = JSON.parse(localStorage.getItem("user") || "null");
+        const accountDetails = document.getElementById("accountDetails");
+        
+        if (user) {
+          if (user.type === "company") {
+            accountDetails.innerHTML = `
+              <div class="text-center">
+                <i class="fas fa-building fa-3x text-primary mb-3"></i>
+                <h4>${user.name}</h4>
+                <p class="text-muted">${user.email}</p>
+                <p><strong>Account Type:</strong> Company</p>
+                <button class="btn btn-primary mt-3" onclick="showAdminPanel()">Manage Orders</button>
+              </div>
+            `;
+          } else {
+            accountDetails.innerHTML = `
+              <div class="text-center">
+                <i class="fas fa-user fa-3x text-primary mb-3"></i>
+                <h4>${user.name}</h4>
+                <p class="text-muted">${user.email}</p>
+                <p><strong>Account Type:</strong> Customer</p>
+                <button class="btn btn-primary mt-3" onclick="showMyOrders()">View My Orders</button>
+              </div>
+            `;
+          }
+        } else {
+          accountDetails.innerHTML = `
+            <p class="text-center">Please login to view account details</p>
+            <div class="text-center">
+              <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+              <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#signupModal">Sign Up</button>
+            </div>
+          `;
+        }
+      }
+  </script>
+</body>
+</html>
